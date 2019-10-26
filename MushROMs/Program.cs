@@ -4,7 +4,7 @@
 //     license information, or visit https://www.gnu.org/licenses/#AGPL
 // </copyright>
 
-namespace MushROMs
+namespace Maseya.MushROMs
 {
     using System;
     using System.Collections.Generic;

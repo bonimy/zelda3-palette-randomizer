@@ -6,7 +6,7 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{6A005B94-3BD1-4F0F-9D5A-8F590FC3E85B}</ProjectGuid>
     <OutputType>Exe</OutputType>
-    <RootNamespace>MushROMs</RootNamespace>
+    <RootNamespace>Maseya.MushROMs</RootNamespace>
     <AssemblyName>MushROMs</AssemblyName>
     <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
