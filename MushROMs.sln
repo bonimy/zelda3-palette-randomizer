@@ -5,6 +5,18 @@ VisualStudioVersion = 16.0.29230.47
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MushROMs", "MushROMs\MushROMs.csproj", "{6A005B94-3BD1-4F0F-9D5A-8F590FC3E85B}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{F391A1CA-2BDF-4008-9520-65D07FF81E58}"
+	ProjectSection(SolutionItems) = preProject
+		CODE_OF_CONDUCT.md = CODE_OF_CONDUCT.md
+		CODE_STYLES.md = CODE_STYLES.md
+		CONTRIBUTING.md = CONTRIBUTING.md
+		DESCRIPTION.md = DESCRIPTION.md
+		FAQ.md = FAQ.md
+		LICENSE.md = LICENSE.md
+		MushROMs.sln.licenseheader = MushROMs.sln.licenseheader
+		README.md = README.md
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU

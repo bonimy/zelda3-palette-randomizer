@@ -4,8 +4,8 @@
 //     license information, or visit https://www.gnu.org/licenses/#AGPL
 // </copyright>
 
-using System.Resources;
 using System.Reflection;
+using System.Resources;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 
