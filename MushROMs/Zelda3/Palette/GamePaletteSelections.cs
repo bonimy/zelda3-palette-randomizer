@@ -42,7 +42,7 @@ namespace Maseya.MushROMs.Zelda3.Palette
             DungeonMap = builder.CreatePaletteSelection();
 
             Overworld = new Overworld(new PaletteSelectionBuilder(0xDE6C8, 7));
-            OWMap = new OWMap(new PaletteSelectionBuilder(0x55B27, 16));
+            OWMap = new OWMap(new PaletteSelectionBuilder(0x55B39, 16));
         }
 
         public Overworld Overworld

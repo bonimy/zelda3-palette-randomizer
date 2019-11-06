@@ -19,7 +19,7 @@ namespace Maseya.MushROMs.Zelda3.Palette
                 throw new ArgumentNullException(nameof(builder));
             }
 
-            var builder2 = new PaletteSelectionBuilder(0x774EB, 7);
+            var builder2 = new PaletteSelectionBuilder(0x7F97B, 7);
 
             builder.AddBox(15, 0, 4, 3);
             builder.AddRow(15, 6, 1);
