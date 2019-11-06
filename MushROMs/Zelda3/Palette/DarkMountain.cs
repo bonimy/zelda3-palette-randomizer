@@ -177,16 +177,13 @@ namespace Maseya.MushROMs.Zelda3.Palette
             {
                 Ground,
                 PinkClouds,
-                BlackClouds,
                 Lava,
                 LavaGround,
                 Lightning,
-                WallsAndAbyss,
                 ShiniesAndRocks,
                 PostsAndSteaks,
                 TurtleRockHead,
                 TurtleRockLegs,
-                GanonsTowerPrimary,
                 GanonsTowerHighlight,
             };
         }

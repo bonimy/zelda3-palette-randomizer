@@ -180,13 +180,9 @@ namespace Maseya.MushROMs.Zelda3.Palette
         {
             var result = new List<IListSelection>()
             {
-                HillAndDirt,
-                Water,
                 RedTree,
-                House,
                 Tombstone,
                 CaveCrest,
-                GrassShrubsAndTrees,
                 DryGrassAndSand,
                 FlowersAndRocks,
                 SignsPostsAndBushes,

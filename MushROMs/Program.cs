@@ -19,37 +19,9 @@ namespace Maseya.MushROMs
             var rom = File.ReadAllBytes(input);
             var manager = new PaletteManager(rom);
             var randomColorF = new RandomColorFGenerator();
-            var grassColor = randomColorF.NextColorF();
-            manager.Blend(
-                manager.Selections.DefaultBGColor[0],
-                HcyAdditive,
-                grassColor);
-
-            var lightWorld = manager.Selections.Overworld.LightWorld;
-            foreach (var selection in lightWorld)
+            foreach (var selection in manager.Selections)
             {
-                var blendColor = selection == lightWorld.GrassShrubsAndTrees
-                    ? grassColor
-                    : randomColorF.NextColorF();
-
-                manager.Blend(
-                    selection,
-                    HcyAdditive,
-                    blendColor);
-            }
-
-            grassColor = randomColorF.NextColorF();
-            manager.Blend(
-                manager.Selections.DefaultBGColor[1],
-                HcyAdditive,
-                grassColor);
-
-            var darkWorld = manager.Selections.Overworld.DarkWorld;
-            foreach (var selection in darkWorld)
-            {
-                var blendColor = selection == darkWorld.GrassShrubsAndTrees
-                    ? grassColor
-                    : randomColorF.NextColorF();
+                var blendColor = randomColorF.NextColorF();
 
                 manager.Blend(
                     selection,

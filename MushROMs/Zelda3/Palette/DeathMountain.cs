@@ -90,12 +90,8 @@ namespace Maseya.MushROMs.Zelda3.Palette
         {
             return new IListSelection[]
             {
-                WallsAndAbyss,
-                Ground,
-                Clouds,
                 ShiniesAndRocks,
                 PostsAndSteaks,
-                HeraBricks,
                 HeraStone,
             };
         }

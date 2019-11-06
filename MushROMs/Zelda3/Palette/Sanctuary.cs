@@ -47,7 +47,6 @@ namespace Maseya.MushROMs.Zelda3.Palette
         {
             return new IListSelection[]
             {
-                Wall,
                 Roof,
                 Window,
             };

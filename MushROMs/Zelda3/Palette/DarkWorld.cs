@@ -210,19 +210,11 @@ namespace Maseya.MushROMs.Zelda3.Palette
             {
                 YellowTrees,
                 SignsPostsAndBushes,
-                FlowersAndRocks,
                 DryGrassAndSand,
-                HillAndDirt,
-                GrassShrubsAndTrees,
                 TreeWood,
-                IcePalaceEntrance,
-                Water,
                 PurpleTrees,
-                Pyramid,
                 PyramidBG,
                 PinkTrees,
-                HouseRoof,
-                HouseRoof,
                 Trees,
             };
 

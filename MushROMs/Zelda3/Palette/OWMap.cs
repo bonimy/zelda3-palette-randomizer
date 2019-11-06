@@ -58,7 +58,7 @@ namespace Maseya.MushROMs.Zelda3.Palette
             Hera.CloneDarkWorld(8);
 
             IcePalace = new MapPaletteSelection(16);
-            builder.AddRow(1, 9, 7);
+            builder.AddRow(1, 10, 6);
             IcePalace.LightWorld = builder.CreatePaletteSelection();
             IcePalace.CloneDarkWorld(8);
 
@@ -68,6 +68,7 @@ namespace Maseya.MushROMs.Zelda3.Palette
             HyruleCastle.CloneDarkWorld(8);
 
             Water = new MapPaletteSelection(16);
+            builder.AddRow(1, 9, 1);
             builder.AddRow(2, 6, 2);
             builder.AddRow(2, 10, 1);
             builder.AddRow(3, 12, 2);
@@ -86,7 +87,7 @@ namespace Maseya.MushROMs.Zelda3.Palette
             builder.AddRow(3, 10, 1);
             builder.AddRow(4, 2, 2);
             builder.AddRow(4, 15, 1);
-            builder.AddRow(5, 2, 4);
+            builder.AddRow(5, 2, 3);
             builder.AddRow(5, 10, 2);
             builder.AddRow(6, 1, 1);
             Grass.LightWorld = builder.CreatePaletteSelection();
@@ -118,6 +119,11 @@ namespace Maseya.MushROMs.Zelda3.Palette
             builder.AddRow(6, 12, 4);
             WoodBridges.LightWorld = builder.CreatePaletteSelection();
             WoodBridges.CloneDarkWorld(8);
+
+            Flowers = new MapPaletteSelection(16);
+            builder.AddRow(5, 5, 1);
+            Flowers.LightWorld = builder.CreatePaletteSelection();
+            Flowers.CloneDarkWorld(8);
         }
 
         public MapPaletteSelection World
@@ -195,6 +201,11 @@ namespace Maseya.MushROMs.Zelda3.Palette
             get;
         }
 
+        public MapPaletteSelection Flowers
+        {
+            get;
+        }
+
         public override IListSelection[] AllSelections()
         {
             return new IListSelection[]
@@ -227,6 +238,8 @@ namespace Maseya.MushROMs.Zelda3.Palette
                 Hera.DarkWorld,
                 IcePalace.LightWorld,
                 IcePalace.DarkWorld,
+                Flowers.LightWorld,
+                Flowers.DarkWorld,
             };
         }
     }
