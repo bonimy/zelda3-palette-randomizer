@@ -84,7 +84,7 @@ namespace Maseya.Helper.Collections.Generic
             }
 
             var sizeOfT = converter.SizeOfItem;
-            var lastByteIndex = ((selection.MaxIndex + 1) * sizeOfT) - 1;
+            var lastByteIndex = selection.MaxIndex + sizeOfT - 1;
             if (lastByteIndex >= sourceArray.Length)
             {
                 throw new ArgumentException();
@@ -395,7 +395,7 @@ namespace Maseya.Helper.Collections.Generic
             }
 
             var sizeOfT = Converter.SizeOfItem;
-            var lastOffset = ((Selection.MaxIndex + 1) * sizeOfT) - 1;
+            var lastOffset = Selection.MaxIndex + sizeOfT - 1;
             if (lastOffset + startOffset >= destinationArray.Length)
             {
                 throw new ArgumentOutOfRangeException(nameof(startOffset));

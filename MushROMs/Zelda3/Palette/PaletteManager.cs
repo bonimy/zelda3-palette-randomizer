@@ -23,10 +23,10 @@ namespace Maseya.MushROMs.Zelda3.Palette
                 throw new ArgumentNullException(nameof(rom));
             }
 
-            if (rom.Length != 0x20_0000 && rom.Length != 0x40_0000)
+            if (rom.Length < 0x10_0000)
             {
                 throw new InvalidOperationException(
-                    "Expected a 2MB or 4MB headerless input ROM.");
+                    "Expected a headerless ROM at least 1MB in size.");
             }
 
             Rom = new byte[rom.Length];
