@@ -1,0 +1,53 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <RootNamespace>Maseya.Snes</RootNamespace>
+    <LangVersion>latest</LangVersion>
+    <PackageId>Maseya.Snes</PackageId>
+    <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
+    <Authors>Nelson Garcia</Authors>
+    <Company>Maseya</Company>
+    <Description>C# .NET class library for Super NES graphics resources.</Description>
+    <Copyright>Copyright (c) 2018 Nelson Garcia</Copyright>
+    <PackageLicenseUrl>https://www.gnu.org/licenses/#AGPL</PackageLicenseUrl>
+    <PackageProjectUrl>https://github.com/Maseya/MushROMs</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/Maseya/MushROMs</RepositoryUrl>
+    <RepositoryType>Dependency</RepositoryType>
+    <NeutralLanguage>English (United States)</NeutralLanguage>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <DocumentationFile>bin\Release\Snes.xml</DocumentationFile>
+    <OutputPath>bin\$(Configuration)</OutputPath>
+    <NoWarn>1701;1702;CS1591;</NoWarn>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <DocumentationFile>bin\Debug\Snes.xml</DocumentationFile>
+    <OutputPath>bin\$(Configuration)</OutputPath>
+    <NoWarn>1701;1702;CS1591;</NoWarn>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="stylecop.json" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <AdditionalFiles Include="stylecop.json" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="StyleCop.Analyzers" Version="1.1.1-beta.61">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
+    </PackageReference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Helper\Helper.csproj" />
+  </ItemGroup>
+
+</Project>
