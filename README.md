@@ -31,6 +31,9 @@ A set of colors is randomized according to the following rules:
 
 I may make the percentages customizable.
 
+![example1](https://cdn.discordapp.com/attachments/329059206030295051/641420281608405022/unknown.png)
+![example2](https://cdn.discordapp.com/attachments/329059206030295051/641445510074466304/unknown.png)
+
 ## Installation
 
 Presently, the [Visual Studio 2017 IDE][vs17] is the only supported
