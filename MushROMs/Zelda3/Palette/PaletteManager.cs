@@ -7,7 +7,6 @@
 namespace Maseya.MushROMs.Zelda3.Palette
 {
     using System;
-    using System.Collections.Generic;
     using Maseya.Helper;
     using Maseya.Helper.Collections;
     using Maseya.Helper.Collections.Generic;
@@ -33,14 +32,6 @@ namespace Maseya.MushROMs.Zelda3.Palette
             Array.Copy(rom, Rom, rom.Length);
 
             Selections = new GamePaletteSelections();
-            Palettes = new List<PaletteSelectionData>();
-            foreach (var selection in Selections.Overworld)
-            {
-                var palette = GetPalette(selection);
-                Palettes.Add(palette);
-            }
-
-            RandomColorF = new RandomColorFGenerator();
         }
 
         public GamePaletteSelections Selections
@@ -48,26 +39,9 @@ namespace Maseya.MushROMs.Zelda3.Palette
             get;
         }
 
-        public List<PaletteSelectionData> Palettes
-        {
-            get;
-        }
-
-        public RandomColorFGenerator RandomColorF
-        {
-            get;
-        }
-
         private byte[] Rom
         {
             get;
-        }
-
-        public void Randomize()
-        {
-            foreach (var palette in Palettes)
-            {
-            }
         }
 
         public void Blend(
