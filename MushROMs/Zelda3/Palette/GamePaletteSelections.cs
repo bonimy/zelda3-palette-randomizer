@@ -225,9 +225,14 @@ namespace Maseya.MushROMs.Zelda3.Palette
                 OWMap.BridgeWalkways.DarkWorld,
                 OWMap.Flowers.DarkWorld);
 
+            result.AddRange(Sword);
             result.AddRange(Shield);
+            result.AddRange(Enemies1);
+            result.AddRange(Enemies2);
+            result.AddRange(OtherSprites);
             result.AddRange(PalaceMapSprite);
             result.Add(DungeonMap);
+
             result.AddRange(Overworld);
 
             // TODO: Improve dungeon palette randomizer.
