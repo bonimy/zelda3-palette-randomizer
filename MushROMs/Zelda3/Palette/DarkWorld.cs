@@ -19,8 +19,6 @@ namespace Maseya.MushROMs.Zelda3.Palette
                 throw new ArgumentNullException(nameof(builder));
             }
 
-            builder.AddRow(-8, 4, 1);
-            builder.AddRow(-8, 6, 1);
             builder.AddBox(5, 0, 4, 3);
             builder.AddColumn(5, 6, 2);
             builder.AddRow(7, 4, 3);
@@ -32,18 +30,21 @@ namespace Maseya.MushROMs.Zelda3.Palette
 
             builder.AddRow(5, 4, 2);
             builder.AddBox(8, 4, 3, 2);
+            builder.AddRow(9, 3, 1);
             builder.AddBox(72, 4, 2, 3);
             builder.AddRow(79, 5, 2);
             GrassShrubsAndTrees = builder.CreatePaletteSelection();
 
             builder.AddRow(6, 4, 2);
             builder.AddRow(65, 5, 2);
+            builder.AddRow(71, 3, 3);
             DryGrassAndSand = builder.CreatePaletteSelection();
 
             builder.AddRow(8, 1, 3);
+            builder.AddRow(79, 0, 5);
             FlowersAndRocks = builder.CreatePaletteSelection();
 
-            builder.AddRow(9, 1, 3);
+            builder.AddRow(9, 1, 2);
             SignsPostsAndBushes = builder.CreatePaletteSelection();
 
             builder.AddRow(81, 0, 7);
@@ -53,7 +54,7 @@ namespace Maseya.MushROMs.Zelda3.Palette
             Pyramid = builder.CreatePaletteSelection();
 
             builder.AddRow(-8, 0, 4);
-            builder.AddRow(-8, 0, 5);
+            builder.AddRow(-8, 5, 1);
             builder.AddRow(69, 5, 1);
             builder.AddRow(70, 1, 1);
             builder.AddRow(71, 1, 2);

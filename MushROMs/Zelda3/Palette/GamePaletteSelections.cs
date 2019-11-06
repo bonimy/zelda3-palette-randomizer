@@ -17,6 +17,7 @@ namespace Maseya.MushROMs.Zelda3.Palette
             DefaultBGColor = new SingleItemListSelection[]
             {
                 new SingleItemListSelection(0x5FEA9),
+                new SingleItemListSelection(0x5FEB3),
             };
 
             Sword = LinearPaletteSelections(0xDD630, 4, 3);

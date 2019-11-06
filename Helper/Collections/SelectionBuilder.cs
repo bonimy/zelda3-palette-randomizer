@@ -77,5 +77,10 @@ namespace Maseya.Helper.Collections
 
             return result;
         }
+
+        public List<int> Current()
+        {
+            return new List<int>(Collection);
+        }
     }
 }

@@ -30,13 +30,11 @@ namespace Maseya.MushROMs.Zelda3.Palette
             builder.AddRow(10, 4, 2);
             builder.AddBox(13, 5, 2, 2);
             builder.AddRow(51, 4, 2);
-            builder.AddRow(89, 5, 1);
             Ground = builder.CreatePaletteSelection();
 
             builder.AddRow(11, 4, 3);
             builder.AddRow(50, 4, 1);
             builder.AddRow(50, 6, 1);
-            builder.AddRow(51, 4, 2);
             Clouds = builder.CreatePaletteSelection();
 
             builder.AddRow(13, 0, 5);

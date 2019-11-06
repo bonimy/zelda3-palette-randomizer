@@ -26,9 +26,28 @@ namespace Maseya.MushROMs
                 grassColor);
 
             var lightWorld = manager.Selections.Overworld.LightWorld;
-            foreach (var selection in manager.Selections.Overworld)
+            foreach (var selection in lightWorld)
             {
                 var blendColor = selection == lightWorld.GrassShrubsAndTrees
+                    ? grassColor
+                    : randomColorF.NextColorF();
+
+                manager.Blend(
+                    selection,
+                    HcyAdditive,
+                    blendColor);
+            }
+
+            grassColor = randomColorF.NextColorF();
+            manager.Blend(
+                manager.Selections.DefaultBGColor[1],
+                HcyAdditive,
+                grassColor);
+
+            var darkWorld = manager.Selections.Overworld.DarkWorld;
+            foreach (var selection in darkWorld)
+            {
+                var blendColor = selection == darkWorld.GrassShrubsAndTrees
                     ? grassColor
                     : randomColorF.NextColorF();
 

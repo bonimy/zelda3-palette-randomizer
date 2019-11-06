@@ -6,7 +6,9 @@
 
 namespace Maseya.MushROMs.Zelda3.Palette
 {
+    using System.Collections.Generic;
     using System.Drawing;
+    using System.Linq;
     using Maseya.Helper.Collections;
     using Maseya.Snes;
 
@@ -75,6 +77,16 @@ namespace Maseya.MushROMs.Zelda3.Palette
             return CreateSelection().ToByteSelection(
                 Offset,
                 PaletteConverter.Default);
+        }
+
+        public List<int> CurrentPaletteIndexes()
+        {
+            return new List<int>(Current().Select(GetOffset));
+
+            int GetOffset(int index)
+            {
+                return PaletteConverter.Default.GetOffset(Offset, index);
+            }
         }
     }
 }

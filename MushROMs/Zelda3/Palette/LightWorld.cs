@@ -52,7 +52,6 @@ namespace Maseya.MushROMs.Zelda3.Palette
             builder.AddRow(55, 1, 2);
             builder.AddRow(58, 1, 7);
             builder.AddRow(59, 5, 2);
-            builder.AddRow(71, 3, 3);
             DryGrassAndSand = builder.CreatePaletteSelection();
 
             builder.AddRow(-7, 1, 3);

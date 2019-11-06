@@ -22,6 +22,11 @@ namespace Maseya.Helper
             get;
         }
 
+        public int GetOffset(int startOffset, int index)
+        {
+            return startOffset + (index * SizeOfItem);
+        }
+
         public T GetItem(byte[] sourceArray)
         {
             return GetItem(sourceArray, 0);

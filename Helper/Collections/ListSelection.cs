@@ -134,7 +134,7 @@ namespace Maseya.Helper.Collections
 
             int GetOffset(int index)
             {
-                return (index * sizeOfT) + startOffset;
+                return converter.GetOffset(startOffset, index);
             }
         }
     }

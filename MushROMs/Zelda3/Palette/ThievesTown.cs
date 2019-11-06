@@ -26,14 +26,6 @@ namespace Maseya.MushROMs.Zelda3.Palette
 
             builder.AddRow(77, 0, 7);
             GrassRoof = builder.CreatePaletteSelection();
-
-            builder.AddRow(79, 0, 5);
-            Gargoyle = builder.CreatePaletteSelection();
-        }
-
-        public IListSelection Gargoyle
-        {
-            get;
         }
 
         public IListSelection Walkway
@@ -55,7 +47,6 @@ namespace Maseya.MushROMs.Zelda3.Palette
         {
             return new IListSelection[]
             {
-                Gargoyle,
                 Walkway,
                 GrassRoof,
                 HedgeFence,
