@@ -19,7 +19,7 @@ namespace Maseya.MushROMs.Zelda3.Palette
                 throw new ArgumentNullException(nameof(builder));
             }
 
-            var builder2 = new PaletteSelectionBuilder(0x7F97B, 7);
+            var builder2 = new PaletteSelectionBuilder(0x3F97B, 7);
 
             builder.AddBox(15, 0, 4, 3);
             builder.AddRow(15, 6, 1);
@@ -47,6 +47,9 @@ namespace Maseya.MushROMs.Zelda3.Palette
             builder2.AddRow(4, 5, 1);
             list.AddRange(builder2.CurrentPaletteIndexes());
             builder2.Clear();
+
+            // TODO: Figure out what other palettes exist at this address.
+            list.Add(0x3F9BD);
             Ground = builder.CreatePaletteSelection();
 
             builder.AddRow(16, 4, 1);
