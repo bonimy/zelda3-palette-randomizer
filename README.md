@@ -6,7 +6,8 @@ Link to the Past.
 ## Table of Contents
 
 - [What is a palette randomizer?](#what-is-a-palette-randomizer)
-- [Installation](#installation)
+- [How to use](#how-to-use)
+- [Building from source](#building-from-source)
     - [Visual Studio](#visual-studio)
 - [Contributions](#contributions)
 - [Credits](#credits)
@@ -34,7 +35,20 @@ I may make the percentages customizable.
 ![example1](https://cdn.discordapp.com/attachments/329059206030295051/641420281608405022/unknown.png)
 ![example2](https://cdn.discordapp.com/attachments/329059206030295051/641445510074466304/unknown.png)
 
-## Installation
+## How to use
+
+Go to our [Releases](https://github.com/bonimy/zelda3-palette-randomizer/releases)
+page. From there, download _Z3PaletteRandomizer.zip_ under that _Assets_ tab of
+the latest release.
+
+You can simply drag and drop the Link to the Past Randomized ROM you wish to use
+onto the application `MushROMs.exe`. Or you can start the app yourself and
+manually enter the path to the ROM.
+
+It is recommended that your logic randomizer app keep the vanilla palette, or
+you may still experience ugly colors after using this app.
+
+## Building from source
 
 Presently, the [Visual Studio 2017 IDE][vs17] is the only supported
 environment. Users are encouraged to suggest new environments in our
@@ -70,8 +84,8 @@ programmer
 
 ## License
 
-C# .NET Class Library for creating 2D game editors
-Copyright (C) 2018 Nelson Garcia
+C# .NET Console App for randomizing Link to the Past palettes
+Copyright (C) 2018-2020 Nelson Garcia
 
 This program is free software: you can redistribute it and/or modify
 it under the terms of the GNU Affero General Public License as published
