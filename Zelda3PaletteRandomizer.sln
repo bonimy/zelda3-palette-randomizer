@@ -1,0 +1,37 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29230.47
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{F391A1CA-2BDF-4008-9520-65D07FF81E58}"
+	ProjectSection(SolutionItems) = preProject
+		CODE_OF_CONDUCT.md = CODE_OF_CONDUCT.md
+		CODE_STYLES.md = CODE_STYLES.md
+		CONTRIBUTING.md = CONTRIBUTING.md
+		DESCRIPTION.md = DESCRIPTION.md
+		LICENSE.md = LICENSE.md
+		README.md = README.md
+		Zelda3PaletteRandomizer.ruleset = Zelda3PaletteRandomizer.ruleset
+		Zelda3PaletteRandomizer.sln.licenseheader = Zelda3PaletteRandomizer.sln.licenseheader
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Zelda3PaletteRandomizer", "src\Zelda3PaletteRandomizer\Zelda3PaletteRandomizer.csproj", "{223A9D70-0BA8-4688-8063-0AC2F9E49081}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{223A9D70-0BA8-4688-8063-0AC2F9E49081}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{223A9D70-0BA8-4688-8063-0AC2F9E49081}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{223A9D70-0BA8-4688-8063-0AC2F9E49081}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{223A9D70-0BA8-4688-8063-0AC2F9E49081}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {79B5EDCE-69E7-4CFA-9C8A-432DCFFE34E0}
+	EndGlobalSection
+EndGlobal
