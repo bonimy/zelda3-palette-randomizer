@@ -6,6 +6,7 @@ Link to the Past.
 ## Table of Contents
 
 - [What is a palette randomizer?](#what-is-a-palette-randomizer)
+- [Advantages over other palette randomizers](#advantages-over-other-palette-randomizers)
 - [How to use](#how-to-use)
 - [Building from source](#building-from-source)
     - [Visual Studio](#visual-studio)
@@ -24,16 +25,35 @@ without any disconnects in colors (e.g. grass having two different colors).
 
 A set of colors is randomized according to the following rules:
 - Shift a color's hue by at least 5%. This ensures a color is actually changed.
-- Shift a color's saturation/chroma by no more than 50% of its original. This
-  prevents colors from looking over or undersaturated compared to the original,
-  which is cause for many ugly colors.
-- Shift a color's luma/lightness by no more than 25% of its original. Lightness
-  is even more sensitive than saturation and should not be altered too much.
-
-I may make the percentages customizable.
+- If increasing saturation, do so very gently and proportional to current value.
+- Saturation is okay to be reduced all the way to zero.
+- Increasing brightness is similar to increasing to increasing saturation.
+- If a lot of saturation was removed, allow increasing the brightness slightly
+  more.
+- If reducing brightness, do so by no more than half (this may be restricted
+  further in the future).
 
 ![example1](https://cdn.discordapp.com/attachments/329059206030295051/641420281608405022/unknown.png)
 ![example2](https://cdn.discordapp.com/attachments/329059206030295051/641445510074466304/unknown.png)
+
+## Advantages over other palette randomizers
+
+While Link to the Past Randomizer already has a built-in palette randomizer, it does
+not take the necessary care to ensure every palette can be randomized. Certain items
+like houses and rocks are never randomized. Further, the overworld palette randomizer
+does not have as much control as this app does, which allows for much richer
+variety of colors.
+
+TODO: Add pictures
+
+* The overworld map palette is updated to reflect the new overworld palette.
+* Sprite palettes of rocks and bushes match their object palettes.
+* Ice golem palettes match Ice Palace palettes.
+
+![example3](https://media.discordapp.net/attachments/329059206030295051/712227454248550450/unknown.png?width=783&height=684)
+![example4](https://media.discordapp.net/attachments/329059206030295051/712228332552323112/unknown.png?width=783&height=684)
+![example5](https://media.discordapp.net/attachments/329059206030295051/712383831268786216/unknown.png?width=782&height=684)
+
 
 ## How to use
 
@@ -42,11 +62,66 @@ page. From there, download _Z3PaletteRandomizer.zip_ under that _Assets_ tab of
 the latest release.
 
 You can simply drag and drop the Link to the Past Randomized ROM you wish to use
-onto the application `MushROMs.exe`. Or you can start the app yourself and
+onto the application `Z3PaletteRandomizer.exe`. Or you can start the app yourself and
 manually enter the path to the ROM.
 
 It is recommended that your logic randomizer app keep the vanilla palette, or
 you may still experience ugly colors after using this app.
+
+The following command-line arguments are supported by the app:
+
+```
+[args...] inputFile <outputFile>
+
+inputFile           Input path of ROM. Required
+
+outputFile          Output destination. Optional
+                    If no path is specified, the app will
+                    decide an appropriate file name.
+
+args:
+-j --use-json       Output results as JSON file.
+-J --no-use-json    Output results to ROM file. Default
+
+-w --overworld      Randomize overworld palettes. Default
+-W --no-overworld   Do not randomize overworld palettes
+
+-d --dungeon        Randomize dungeon palettes. Default
+-D --no-dungeon     Do not randomize dungeon palettes.
+
+-l --link-sprite    Randomize Link sprite palette.
+-L --no-link-sprite Do not randomize Link sprite palette. Default
+
+   --sword          Randomize sword palettes.
+   --no-sword       Do not randomize sword palettes. Default
+   
+   --shield         Randomize shield palettes.
+   --no-shield      Do not randomize shield palettes. Default
+   
+   --sprite         Randomize sprite palettes.
+   --no-sprite      Do not randomize sprite palettes. Default
+   
+   --sprite2        Randomize advanced sprite palettes.
+   --no-sprite2     Do not randomize advanced sprite palettes. Default
+   
+   --hud            Randomize HUD palettes.
+   --no-hud         Do not randomize HUD palettes. Default
+   
+   --seed=value     Use specific seed for random generator.
+                    Hex is supported with "0x" prefix. Default value
+                    is -1, which specifies not using predetermined
+                    seed.
+                    
+   --mode=value     None: Makes no changes to rom.
+                    Default: Default color mixing algorithm.
+                    Negative: Invert all colors.
+                    Grayscale: Desaturate all colors.
+                    Blackout: Set all colors to black.
+                    Puke: Randomize each color without logic.
+```
+
+You can override the default arguments in the `args.config` file located
+in the application folder.
 
 ## Building from source
 
