@@ -19,13 +19,13 @@ namespace Maseya.Zelda3.Palette
                 throw new ArgumentNullException(nameof(builder));
             }
 
-            builder.AddRow(75, 0, 4);
+            builder.AddRow(75, 1, 3);
             HedgeFence = builder.Flush();
 
             builder.AddRow(75, 5, 2);
             Walkway = builder.Flush();
 
-            builder.AddRow(77, 0, 7);
+            builder.AddRow(77, 1, 6);
             GrassRoof = builder.Flush();
 
             AllIndexCollections = new ReadOnlyCollection<IndexCollection>(

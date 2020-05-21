@@ -30,6 +30,7 @@ namespace Maseya.Zelda3.Palette
             builder1.AddBox(15, 0, 4, 3);
             builder1.AddRow(15, 6, 1);
             builder1.AddRow(17, 4, 3);
+            builder1.AddColumn(45, 0, 2);
             builder1.AddRow(85, 0, 4);
             builder1.AddRow(85, 6, 1);
             builder1.AddRow(89, 0, 4);
@@ -89,6 +90,7 @@ namespace Maseya.Zelda3.Palette
             Lightning = builder2.Flush();
 
             builder1.AddBox(45, 1, 4, 2);
+            builder1.AddColumn(45, 6, 2);
             builder1.AddRow(47, 1, 3);
             TurtleRockHead = builder1.Flush();
 

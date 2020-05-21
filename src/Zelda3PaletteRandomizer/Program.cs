@@ -25,6 +25,14 @@ namespace Maseya.LttpPaletteRandomizer
             @"n(o)?|f(alse)?",
             RegexOptions.Compiled | RegexOptions.IgnoreCase);
 
+        private static readonly Regex GrayscaleRegex = new Regex(
+            @"gr[ae]y(scale)?",
+            RegexOptions.Compiled | RegexOptions.IgnoreCase);
+
+        private static readonly Regex NegativeRegex = new Regex(
+            @"invert(ed)?|neg(ative)?",
+            RegexOptions.Compiled | RegexOptions.IgnoreCase);
+
         public static void RandomizePalette(Options options)
         {
             if (options is null)
@@ -257,6 +265,16 @@ namespace Maseya.LttpPaletteRandomizer
             if (Enum.TryParse(input, true, out RandomizerMode result))
             {
                 return result;
+            }
+
+            if (GrayscaleRegex.IsMatch(input))
+            {
+                return RandomizerMode.Grayscale;
+            }
+
+            if (NegativeRegex.IsMatch(input))
+            {
+                return RandomizerMode.Negative;
             }
 
             Console.WriteLine(Resources.StatusInvalidInput);

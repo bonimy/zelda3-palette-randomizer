@@ -33,15 +33,21 @@ namespace Maseya.Zelda3.Palette
                 throw new ArgumentNullException(nameof(lightWorldSprites));
             }
 
+            objectBuilder.AddRow(-7, 0, 1);
             objectBuilder.AddRow(-7, 4, 1);
             objectBuilder.AddRow(-7, 6, 1);
             objectBuilder.AddBox(0, 0, 4, 3);
             objectBuilder.AddColumn(0, 6, 2);
             objectBuilder.AddRow(2, 4, 3);
-            objectBuilder.AddRow(42, 1, 1);
+            objectBuilder.AddRow(30, 0, 1);
+            objectBuilder.AddColumn(33, 0, 5);
+            objectBuilder.AddRow(42, 0, 2);
             objectBuilder.AddRow(42, 6, 1);
-            objectBuilder.AddRow(44, 1, 3);
+            objectBuilder.AddRow(43, 0, 1);
+            objectBuilder.AddRow(44, 0, 4);
             objectBuilder.AddRow(44, 6, 1);
+            objectBuilder.AddRow(53, 3, 1);
+            objectBuilder.AddColumn(55, 0, 5);
             objectBuilder.AddRow(57, 5, 2);
             HillsAndDirt = objectBuilder.Flush();
 
@@ -49,14 +55,16 @@ namespace Maseya.Zelda3.Palette
             objectBuilder.AddBox(3, 4, 3, 2);
             objectBuilder.AddBox(25, 0, 7, 5);
             objectBuilder.AddRow(31, 5, 2);
+            objectBuilder.AddRow(32, 0, 1);
             objectBuilder.AddRow(32, 4, 3);
             objectBuilder.AddRow(34, 3, 1);
             objectBuilder.AddRow(34, 5, 1);
             objectBuilder.AddRow(35, 4, 3);
             objectBuilder.AddRow(38, 4, 2);
             objectBuilder.AddBox(42, 4, 2, 3);
-            objectBuilder.AddRow(53, 1, 2);
+            objectBuilder.AddRow(53, 0, 3);
             objectBuilder.AddRow(53, 5, 1);
+            objectBuilder.AddRow(54, 0, 1);
             objectBuilder.AddColumn(54, 4, 2);
             objectBuilder.AddRow(60, 6, 1);
             objectBuilder.AddRow(62, 0, 1);
@@ -85,7 +93,7 @@ namespace Maseya.Zelda3.Palette
             objectBuilder.AddRow(32, 1, 3);
             objectBuilder.AddRow(34, 1, 2);
             objectBuilder.AddRow(55, 1, 2);
-            objectBuilder.AddRow(58, 1, 7);
+            objectBuilder.AddRow(58, 1, 6);
             objectBuilder.AddRow(59, 5, 2);
             objectBuilder.AddRow(62, 1, 1);
             list.AddRange(objectBuilder.Flush());
@@ -146,6 +154,9 @@ namespace Maseya.Zelda3.Palette
             objectBuilder.AddRow(57, 4, 1);
             DesertPrayerFloor = objectBuilder.Flush();
 
+            objectBuilder.AddRow(-9, 1, 3);
+            WarpTile = objectBuilder.Flush();
+
             HyruleCastle = new HyruleCastle(objectBuilder);
             Sanctuary = new Sanctuary(objectBuilder);
             Kakariko = new Kakariko(objectBuilder);
@@ -166,6 +177,7 @@ namespace Maseya.Zelda3.Palette
                     SignsAndPosts,
                     Palace,
                     DesertPrayerFloor,
+                    WarpTile,
                 });
 
             MiscIndexCollections = new ReadOnlyCollection<IndexCollection>(
@@ -178,6 +190,7 @@ namespace Maseya.Zelda3.Palette
                     SignsAndPosts,
                     Palace,
                     DesertPrayerFloor,
+                    WarpTile,
                 });
         }
 
@@ -237,6 +250,11 @@ namespace Maseya.Zelda3.Palette
         }
 
         public IndexCollection DesertPrayerFloor
+        {
+            get;
+        }
+
+        public IndexCollection WarpTile
         {
             get;
         }

@@ -19,33 +19,41 @@ namespace Maseya.Zelda3.Palette
                 throw new ArgumentNullException(nameof(builder));
             }
 
-            builder.AddBox(10, 1, 3, 3);
+            builder.AddRow(-9, 0, 1);
+            builder.AddBox(10, 0, 4, 3);
             builder.AddRow(10, 6, 1);
             builder.AddRow(12, 4, 3);
             builder.AddRow(49, 5, 2);
-            builder.AddBox(51, 1, 3, 2);
+            builder.AddBox(51, 0, 4, 2);
             builder.AddColumn(51, 6, 2);
             WallsAndAbyss = builder.Flush();
 
             builder.AddRow(10, 4, 2);
-            builder.AddRow(13, 5, 2);
-            builder.AddRow(14, 5, 1);
+            builder.AddBox(13, 4, 2, 2);
             builder.AddRow(51, 4, 2);
             Ground = builder.Flush();
 
+            builder.AddRow(-9, 4, 1);
+            builder.AddRow(-9, 6, 1);
             builder.AddRow(11, 4, 3);
             builder.AddRow(50, 4, 1);
             builder.AddRow(50, 6, 1);
+            builder.AddRow(52, 4, 2);
+            builder.AddRow(53, 4, 1);
+            builder.AddRow(53, 6, 1);
             Clouds = builder.Flush();
 
-            builder.AddRow(13, 0, 5);
+            builder.AddRow(50, 0, 4);
+            Bridge = builder.Flush();
+
+            builder.AddRow(13, 0, 4);
             RocksAndGems = builder.Flush();
 
-            builder.AddRow(14, 0, 5);
+            builder.AddRow(14, 0, 4);
             builder.AddRow(14, 6, 1);
             PostsAndSteaks = builder.Flush();
 
-            builder.AddRow(49, 1, 3);
+            builder.AddRow(49, 0, 4);
             HeraStone = builder.Flush();
 
             builder.AddRow(49, 4, 1);
@@ -59,6 +67,7 @@ namespace Maseya.Zelda3.Palette
                     Clouds,
                     RocksAndGems,
                     PostsAndSteaks,
+                    Bridge,
                     HeraBricks,
                     HeraStone,
                 });
@@ -66,8 +75,10 @@ namespace Maseya.Zelda3.Palette
             MiscIndexCollections = new ReadOnlyCollection<IndexCollection>(
                 new IndexCollection[]
                 {
+                    Ground,
                     RocksAndGems,
                     PostsAndSteaks,
+                    Bridge,
                     HeraStone,
                 });
         }
@@ -93,6 +104,11 @@ namespace Maseya.Zelda3.Palette
         }
 
         public IndexCollection PostsAndSteaks
+        {
+            get;
+        }
+
+        public IndexCollection Bridge
         {
             get;
         }

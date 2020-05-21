@@ -31,8 +31,7 @@ namespace Maseya.Zelda3.Palette
             builder.AddRow(37, 2, 2);
             Moat = builder.Flush();
 
-            builder.AddRow(38, 0, 4);
-
+            builder.AddRow(38, 1, 3);
             builder.AddRow(38, 6, 1);
             Walls = builder.Flush();
 

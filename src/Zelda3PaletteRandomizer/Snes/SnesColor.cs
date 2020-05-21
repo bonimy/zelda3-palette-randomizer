@@ -217,9 +217,14 @@ namespace Maseya.Snes
         public static explicit operator SnesColor(Color color)
         {
             return new SnesColor(
-                color.R >> 3,
-                color.G >> 3,
-                color.B >> 3);
+                RoundAndClampChannel(color.R) >> 3,
+                RoundAndClampChannel(color.G) >> 3,
+                RoundAndClampChannel(color.B) >> 3);
+
+            static byte RoundAndClampChannel(byte x)
+            {
+                return (byte)Math.Clamp(x + 4, Byte.MinValue, Byte.MaxValue);
+            }
         }
 
         public static implicit operator Color(SnesColor color15)

@@ -64,8 +64,6 @@ namespace Maseya.Helper
         /// </summary>
         public static readonly ColorF Empty = default;
 
-        private const float GrayscaleWeight = 1f / NumberOfColorChannels;
-
         private static readonly IReadOnlyDictionary
             <BlendMode, ColorBlendCallback> BlendDictionary =
             new ReadOnlyDictionary<BlendMode, ColorBlendCallback>(
@@ -847,12 +845,20 @@ namespace Maseya.Helper
         /// </summary>
         public static ColorF Grayscale(ColorF top, ColorF bottom)
         {
-            var gray = GrayscaleWeight * (
-                (top.Red * bottom.Red) +
-                (top.Green * bottom.Green) +
-                (top.Blue * bottom.Blue));
+            var lightness = top.Lightness * bottom.Lightness;
+            var result = FromHsl(0, 0, lightness);
+            return AlphaBlend(result, bottom);
+        }
 
-            return Blend(top, bottom, (x, y) => gray);
+        /// <summary>
+        /// Create an instance <see cref="ColorF"/> that is a luma-weighted
+        /// grayscale blend of two colors.
+        /// </summary>
+        public static ColorF LumaGrayscale(ColorF top, ColorF bottom)
+        {
+            var luma = top.Luma * bottom.Luma;
+            var result = FromHcy(0, 0, luma);
+            return AlphaBlend(result, bottom);
         }
 
         public static ColorF Multiply(ColorF top, ColorF bottom)
@@ -1060,7 +1066,7 @@ namespace Maseya.Helper
         /// </summary>
         public ColorF Grayscale()
         {
-            return Grayscale(this, FromArgb(1, 1, 1));
+            return Grayscale(this, FromHsl(0, 0, 1));
         }
 
         /// <summary>
@@ -1068,9 +1074,7 @@ namespace Maseya.Helper
         /// </summary>
         public ColorF LumaGrayscale()
         {
-            return Grayscale(
-                this,
-                FromArgb(LumaRedWeight, LumaGreenWeight, LumaBlueWeight));
+            return LumaGrayscale(this, FromHcy(0, 0, 1));
         }
 
         /// <summary>

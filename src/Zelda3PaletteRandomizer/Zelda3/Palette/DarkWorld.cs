@@ -37,10 +37,14 @@ namespace Maseya.Zelda3.Palette
             objectBuilder.AddBox(5, 0, 4, 3);
             objectBuilder.AddColumn(5, 6, 2);
             objectBuilder.AddRow(7, 4, 3);
+            objectBuilder.AddRow(65, 0, 1);
+            objectBuilder.AddColumn(70, 0, 6);
             objectBuilder.AddRow(72, 1, 1);
             objectBuilder.AddRow(72, 6, 1);
             objectBuilder.AddRow(74, 1, 3);
             objectBuilder.AddRow(74, 6, 1);
+            objectBuilder.AddColumn(77, 0, 2);
+            objectBuilder.AddColumn(82, 0, 1);
             HillsAndDirt = objectBuilder.Flush();
 
             objectBuilder.AddRow(5, 4, 2);
@@ -104,7 +108,7 @@ namespace Maseya.Zelda3.Palette
             objectBuilder.AddRow(83, 0, 7);
             Pyramid = objectBuilder.Flush();
 
-            objectBuilder.AddRow(69, 0, 4);
+            objectBuilder.AddRow(69, 0, 5);
             objectBuilder.AddRow(69, 6, 1);
             IcePalaceEntrance = objectBuilder.Flush();
 
@@ -114,9 +118,9 @@ namespace Maseya.Zelda3.Palette
             objectBuilder.AddRow(78, 4, 3);
             Houses = objectBuilder.Flush();
 
-            objectBuilder.AddRow(64, 1, 3);
-            objectBuilder.AddRow(76, 1, 3);
-            objectBuilder.AddRow(80, 1, 3);
+            objectBuilder.AddRow(64, 0, 4);
+            objectBuilder.AddRow(76, 0, 4);
+            objectBuilder.AddRow(80, 0, 4);
             list.AddRange(objectBuilder.Flush());
             spriteBuilder.AddRow(-9, 1, 1);
             spriteBuilder.AddRow(-9, 4, 3);
@@ -124,7 +128,6 @@ namespace Maseya.Zelda3.Palette
             TreeWood = new ListIndexCollection(list);
             list.Clear();
 
-            objectBuilder.AddRow(80, 0, 1);
             objectBuilder.AddRow(80, 4, 3);
             Trees = objectBuilder.Flush();
 
@@ -175,6 +178,7 @@ namespace Maseya.Zelda3.Palette
                     PurpleTrees,
                     PyramidBG,
                     PinkTrees,
+                    HouseStructure,
                     Trees,
                 });
         }
