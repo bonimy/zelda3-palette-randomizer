@@ -2,7 +2,7 @@
   "profiles": {
     "Zelda3PaletteRandomizer": {
       "commandName": "Project",
-      "commandLineArgs": "--mode=negative --sword --shield \"C:\\Users\\nrgarcia\\Downloads\\alttpr - NoGlitches-open-dungeons_NkvenJE8ym.sfc\""
+      "commandLineArgs": "--mode=none --overworld --dungeon --no-link-sprite --sword --shield --no-hud --seed=0 \"C:\\Users\\nrgarcia\\Downloads\\alttpr - NoGlitches-open-dungeons_NkvenJE8ym.sfc\""
     }
   }
 }

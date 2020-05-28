@@ -13,7 +13,7 @@ namespace Maseya.Snes
 
     public class PaletteEditor
     {
-        public PaletteEditor(IndexCollection offsets, IReadOnlyList<byte> rom)
+        public PaletteEditor(IReadOnlyList<byte> rom, IndexCollection offsets)
         {
             if (offsets is null)
             {
@@ -25,7 +25,7 @@ namespace Maseya.Snes
                 throw new ArgumentNullException(nameof(rom));
             }
 
-            Items = new Dictionary<int, SnesColor>(offsets.Count);
+            Items = new Dictionary<int, ColorF>(offsets.Count);
             foreach (var offset in offsets)
             {
                 if (offset > 0)
@@ -44,7 +44,7 @@ namespace Maseya.Snes
             }
         }
 
-        public Dictionary<int, SnesColor> Items
+        public Dictionary<int, ColorF> Items
         {
             get;
         }
@@ -69,7 +69,7 @@ namespace Maseya.Snes
                 throw new ArgumentNullException(nameof(getColor));
             }
 
-            var colorGroupings = new Dictionary<SnesColor, List<int>>();
+            var colorGroupings = new Dictionary<ColorF, List<int>>();
             foreach (var kvp in Items)
             {
                 var offset = kvp.Key;
@@ -104,8 +104,8 @@ namespace Maseya.Snes
             foreach (var kvp in Items)
             {
                 var offset = kvp.Key;
-                var color = kvp.Value;
-                if (offset >= 0)
+                var color = (SnesColor)kvp.Value;
+                if (offset > 0)
                 {
                     rom[offset + 0] = color.Low;
                     rom[offset + 1] = color.High;

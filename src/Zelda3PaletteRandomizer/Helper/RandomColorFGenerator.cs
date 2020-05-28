@@ -8,7 +8,7 @@ namespace Maseya.Helper
 {
     using System;
 
-    public class RandomColorFGenerator
+    public class RandomColorFGenerator : IColorFGenerator
     {
         public RandomColorFGenerator()
         {
@@ -25,7 +25,7 @@ namespace Maseya.Helper
             get;
         }
 
-        public ColorF NextColorF()
+        public ColorF Next()
         {
             return ColorF.FromArgb(
                 (float)Random.NextDouble(),

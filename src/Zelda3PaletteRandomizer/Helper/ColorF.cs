@@ -318,10 +318,10 @@ namespace Maseya.Helper
         public static explicit operator Color(ColorF colorF)
         {
             return Color.FromArgb(
-                (int)Round(colorF.Alpha * Byte.MaxValue),
-                (int)Round(colorF.Red * Byte.MaxValue),
-                (int)Round(colorF.Green * Byte.MaxValue),
-                (int)Round(colorF.Blue * Byte.MaxValue));
+                (int)((colorF.Alpha * Byte.MaxValue) + 0.5),
+                (int)((colorF.Red * Byte.MaxValue) + 0.5),
+                (int)((colorF.Green * Byte.MaxValue) + 0.5),
+                (int)((colorF.Blue * Byte.MaxValue) + 0.5));
         }
 
         /// <summary>

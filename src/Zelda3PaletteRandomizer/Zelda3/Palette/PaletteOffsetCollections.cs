@@ -87,6 +87,12 @@ namespace Maseya.Zelda3.Palette
 
             var result = new UniqueList();
 
+            if (options.RandomizeDungeon)
+            {
+                result.AddRange(TriforceRoom.AllIndexCollections);
+                result.AddRange(ExtraPalettes.DungeonMainBG);
+            }
+
             result.AddRange(ExtraPalettes.GetOverlayPalettes(
                 options.RandomizeDungeon,
                 options.RandomizeDungeon,
@@ -112,12 +118,6 @@ namespace Maseya.Zelda3.Palette
                 result.AddRange(DarkWorld.ThievesTown.AllIndexCollections);
                 result.AddRange(DarkWorld.Swamp.AllIndexCollections);
                 result.AddRange(DarkWorld.DarkMountain.MiscIndexCollections);
-            }
-
-            if (options.RandomizeDungeon)
-            {
-                result.AddRange(TriforceRoom.AllIndexCollections);
-                result.AddRange(ExtraPalettes.DungeonMainBG);
             }
 
             if (options.RandomizeSpritePalettes ||

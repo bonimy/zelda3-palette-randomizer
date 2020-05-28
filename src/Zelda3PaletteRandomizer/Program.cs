@@ -13,6 +13,7 @@ namespace Maseya.LttpPaletteRandomizer
     using System.Text;
     using System.Text.RegularExpressions;
     using CommandLine;
+    using Maseya.Helper;
     using Maseya.Properties;
 
     public static class Program
@@ -51,7 +52,10 @@ namespace Maseya.LttpPaletteRandomizer
                         Resources.DefaultOutputNameSuffix);
             }
 
-            var randomizer = new PaletteRandomizer(options);
+            var random = options.Seed == -1
+                ? new RandomColorFGenerator()
+                : new RandomColorFGenerator(options.Seed);
+            var randomizer = new PaletteRandomizer(options, random);
             randomizer.Randomize();
             randomizer.WriteToOutput();
         }

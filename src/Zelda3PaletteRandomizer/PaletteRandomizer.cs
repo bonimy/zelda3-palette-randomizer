@@ -8,6 +8,8 @@ namespace Maseya.LttpPaletteRandomizer
 {
     using System;
     using System.Collections.ObjectModel;
+    using System.ComponentModel;
+    using System.Drawing;
     using System.IO;
     using Maseya.Helper;
     using Maseya.Snes;
@@ -15,15 +17,16 @@ namespace Maseya.LttpPaletteRandomizer
 
     public class PaletteRandomizer
     {
-        public PaletteRandomizer(Options options)
+        public PaletteRandomizer(
+            Options options,
+            IColorFGenerator generator)
         {
             Options = options
                 ?? throw new ArgumentNullException(nameof(options));
+            Generator = generator
+                ?? throw new ArgumentNullException(nameof(generator));
             Rom = File.ReadAllBytes(options.InputRomPath);
             PaletteOffsetCollections = new PaletteOffsetCollections();
-            Random = options.Seed == -1
-                ? new RandomColorFGenerator()
-                : new RandomColorFGenerator(options.Seed);
             PaletteEditorsInternal = new Collection<PaletteEditor>();
             PaletteEditors = new ReadOnlyCollection<PaletteEditor>(
                 PaletteEditorsInternal);
@@ -50,7 +53,7 @@ namespace Maseya.LttpPaletteRandomizer
             get;
         }
 
-        private RandomColorFGenerator Random
+        private IColorFGenerator Generator
         {
             get;
         }
@@ -66,7 +69,7 @@ namespace Maseya.LttpPaletteRandomizer
             var offsetCollection = PaletteOffsetCollections.GetCollections(Options);
             foreach (var offsets in offsetCollection)
             {
-                PaletteEditorsInternal.Add(new PaletteEditor(offsets, Rom));
+                PaletteEditorsInternal.Add(new PaletteEditor(Rom, offsets));
             }
         }
 
@@ -101,6 +104,12 @@ namespace Maseya.LttpPaletteRandomizer
                 case RandomizerMode.Blackout:
                     Blackout();
                     break;
+
+                default:
+                    throw new InvalidEnumArgumentException(
+                        nameof(randomizerMode),
+                        (int)randomizerMode,
+                        typeof(RandomizerMode));
             }
         }
 
@@ -108,7 +117,7 @@ namespace Maseya.LttpPaletteRandomizer
         {
             foreach (var paletteEditor in PaletteEditors)
             {
-                paletteEditor.Blend(MaseyaBlend, Random.NextColorF());
+                paletteEditor.Blend(MaseyaBlend, Generator.Next());
             }
         }
 
@@ -116,7 +125,7 @@ namespace Maseya.LttpPaletteRandomizer
         {
             foreach (var paletteEditor in PaletteEditors)
             {
-                paletteEditor.BlendByColor(x => Random.NextColorF());
+                paletteEditor.BlendByColor(x => Generator.Next());
             }
         }
 
@@ -124,15 +133,16 @@ namespace Maseya.LttpPaletteRandomizer
         {
             foreach (var paletteEditor in PaletteEditors)
             {
-                paletteEditor.BlendByColor(x => default);
+                paletteEditor.Blend((x, y) => y, default);
             }
         }
 
         public void Grayscale()
         {
+            var white = (ColorF)Color.White;
             foreach (var paletteEditor in PaletteEditors)
             {
-                paletteEditor.BlendByColor(x => x.LumaGrayscale());
+                paletteEditor.Blend(ColorF.LumaGrayscale, white);
             }
         }
 
@@ -140,7 +150,7 @@ namespace Maseya.LttpPaletteRandomizer
         {
             foreach (var paletteEditor in PaletteEditors)
             {
-                paletteEditor.BlendByColor(x => x.Invert());
+                paletteEditor.Blend((x, y) => x.Invert(), default);
             }
         }
 
@@ -171,6 +181,18 @@ namespace Maseya.LttpPaletteRandomizer
             {
                 File.WriteAllBytes(Options.OutputPath, GetUpdatedRomData());
             }
+        }
+
+        public string CreateJsonOfOffsets()
+        {
+            return PaletteJsonFormatter.CreateJson(
+                PaletteOffsetCollections,
+                Options);
+        }
+
+        public string CreateJsonOfPaletteData()
+        {
+            return PaletteJsonFormatter.CreateJson(PaletteEditors);
         }
 
         private static ColorF MaseyaBlend(ColorF x, ColorF y)
