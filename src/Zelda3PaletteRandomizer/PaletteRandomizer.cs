@@ -14,6 +14,7 @@ namespace Maseya.LttpPaletteRandomizer
     using Maseya.Helper;
     using Maseya.Snes;
     using Maseya.Zelda3.Palette;
+    using static System.Math;
 
     public class PaletteRandomizer
     {
@@ -82,34 +83,34 @@ namespace Maseya.LttpPaletteRandomizer
         {
             switch (randomizerMode)
             {
-                case RandomizerMode.None:
-                    break;
+            case RandomizerMode.None:
+                break;
 
-                case RandomizerMode.Default:
-                    MaseyaRandomize();
-                    break;
+            case RandomizerMode.Default:
+                MaseyaRandomize();
+                break;
 
-                case RandomizerMode.Grayscale:
-                    Grayscale();
-                    break;
+            case RandomizerMode.Grayscale:
+                Grayscale();
+                break;
 
-                case RandomizerMode.Negative:
-                    Invert();
-                    break;
+            case RandomizerMode.Negative:
+                Invert();
+                break;
 
-                case RandomizerMode.Puke:
-                    Puke();
-                    break;
+            case RandomizerMode.Puke:
+                Puke();
+                break;
 
-                case RandomizerMode.Blackout:
-                    Blackout();
-                    break;
+            case RandomizerMode.Blackout:
+                Blackout();
+                break;
 
-                default:
-                    throw new InvalidEnumArgumentException(
-                        nameof(randomizerMode),
-                        (int)randomizerMode,
-                        typeof(RandomizerMode));
+            default:
+                throw new InvalidEnumArgumentException(
+                    nameof(randomizerMode),
+                    (int)randomizerMode,
+                    typeof(RandomizerMode));
             }
         }
 
@@ -197,7 +198,7 @@ namespace Maseya.LttpPaletteRandomizer
 
         private static ColorF MaseyaBlend(ColorF x, ColorF y)
         {
-            // Ensure at least a 5% change in hue.
+            // Ensure at least a 2.5% change in hue.
             var hue = (y.Red * 0.95f) + 0.025f + x.Hue;
 
             var chromaShift = y.Green - 0.5f;
@@ -205,12 +206,13 @@ namespace Maseya.LttpPaletteRandomizer
             if (chromaShift > 0)
             {
                 // Put heavy limitations on oversaturating colors.
-                chroma *= 1.0f + ((1.0f - x.Chroma) * chromaShift * 0.5f);
+                chroma *= 1.0f + ((1.0f - chroma) * chromaShift * 0.5f);
             }
             else
             {
-                // Put no limitation on desaturating colors.
-                chroma *= 0.5f + chromaShift;
+                // Put no limitation on desaturating colors. However, make it
+                // more likely that only a little desaturation will occur.
+                chroma *= (float)Pow(1 - Pow(chromaShift * 2, 2), 0.5);
             }
 
             var lumaShift = y.Blue - 0.5f;
@@ -220,13 +222,13 @@ namespace Maseya.LttpPaletteRandomizer
                 // Do not heavily brighten colors. However, if we removed a
                 // lot of saturation, then we can allow for some brighter
                 // colors.
-                var chromaDiff = Math.Max(chroma - x.Chroma, 0);
+                var chromaDiff = Max(x.Chroma - chroma, 0);
                 luma *= 1.0f + ((1.0f - x.Luma) * lumaShift * (1.0f + chromaDiff));
             }
             else
             {
                 // Do not let colors get too dark.
-                luma *= 1.0f + ((0.5f + lumaShift) / 1.0f);
+                luma *= 1.0f + (lumaShift / 2.0f);
             }
 
             var result = ColorF.FromHcy(
