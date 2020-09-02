@@ -123,7 +123,7 @@ namespace Maseya.Snes
 
             set
             {
-                Value &= 0xFF00;
+                Value &= 0x00FF;
                 Value |= (ushort)(value << 8);
             }
         }
@@ -140,7 +140,7 @@ namespace Maseya.Snes
 
             set
             {
-                Value &= 0x00FF;
+                Value &= 0xFF00;
                 Value |= value;
             }
         }
