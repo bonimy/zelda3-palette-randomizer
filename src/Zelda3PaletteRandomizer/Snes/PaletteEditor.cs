@@ -86,7 +86,7 @@ namespace Maseya.Snes
 
             foreach (var kvp in colorGroupings)
             {
-                var color = (SnesColor)getColor(kvp.Key);
+                var color = getColor(kvp.Key);
                 foreach (var offset in kvp.Value)
                 {
                     Items[offset] = color;
